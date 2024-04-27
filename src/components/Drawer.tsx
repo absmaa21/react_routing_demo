@@ -8,7 +8,7 @@ Drawer.propTypes = {
 
 function Drawer({title, children}: any) {
     return (
-        <div className={"col-2 bg-primary text-white p-3"}>
+        <div style={{width: "224px"}} className={"bg-primary text-white p-3 text-center"}>
             <h2>{title}</h2>
             {title && (<hr/>)}
             <div>

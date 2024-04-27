@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from "react-router-dom";
 
@@ -8,15 +7,9 @@ MenuItem.propTypes = {
     useHoverEffect: PropTypes.bool,
 };
 
-function MenuItem({title, path, useHoverEffect}: any) {
-    const [isHovered, setIsHovered] = useState(false);
-
-    function handleHover() {
-        if(useHoverEffect) setIsHovered(!isHovered);
-    }
-
+function MenuItem({title, path}: any) {
     return (
-        <div className={isHovered ? "btn btn-toolbar bg-dark bg-opacity-10" : "btn btn-toolbar"} onMouseEnter={handleHover} onMouseLeave={handleHover}>
+        <div className={"btn btn-toolbar menuItem"}>
             <NavLink className={"nav-link"} to={path}>{title}</NavLink>
         </div>
     );

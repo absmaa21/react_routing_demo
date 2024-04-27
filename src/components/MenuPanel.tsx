@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {PiCaretDownBold, PiCaretRightBold} from "react-icons/pi";
+import "../styles.css";
 
 MenuPanel.propTypes = {
     title: PropTypes.string.isRequired,
@@ -14,7 +15,8 @@ function MenuPanel({title, children, collapsed}: any) {
     return (
         <div>
             <div onClick={() => setIntCollapsed(!intCollapsed)}
-                 className={intCollapsed ? "mb-2 opacity-75" : "mb-2 opacity-100"}>
+                 className={`mb-2 menuPanel-header text-start ${!intCollapsed && "opacity-100"}`}
+            >
                 <span>{title}</span>
                 <span className={"float-end"}>{intCollapsed ? (<PiCaretRightBold/>) : <PiCaretDownBold/>}</span>
             </div>

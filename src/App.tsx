@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import {NavLink, Outlet, Route, Routes} from "react-router-dom";
-import Home from "./components/Home";
-import NoPage from "./components/NoPage";
-import Impressum from "./components/Impressum";
+import {Outlet, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home";
+import NoPage from "./pages/NoPage";
+import Impressum from "./pages/Impressum";
 import MenuItem from "./components/MenuItem";
 import MenuPanel from "./components/MenuPanel";
 import Drawer from "./components/Drawer";
+import FriendsScreen from "./pages/FriendsScreen";
+import AddFriend from "./pages/AddFriend";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
             <Route path="/" element={<Layout/>}>
                 <Route index element={<Home/>}/>
                 <Route path="impressum" element={<Impressum/>}/>
+                <Route path="friends" element={<FriendsScreen/>} />
+                <Route path="friends/add" element={<AddFriend/>} />
                 <Route path="*" element={<NoPage/>}/>
             </Route>
         </Routes>
@@ -23,13 +27,13 @@ function App() {
 function Layout() {
     return (
         <>
-            <nav className={"nav"}>
-                <ul className={"navbar list-unstyled gap-2 px-2 bg-dark w-100"}>
+            <nav className={"nav bg-dark"}>
+                <ul className={"navbar bg-white list-unstyled gap-2 px-2 w-100 mb-1"}>
                     <li className={"nav-item"}>
                         <MenuItem title={"Home"} path={"/"}/>
                     </li>
                     <li className={"nav-item"}>
-                        <MenuItem title={"Impressum"} path={"/impressum"}/>
+                        <MenuItem title={"Impressum"} path={"impressum"}/>
                     </li>
                 </ul>
             </nav>
@@ -37,12 +41,12 @@ function Layout() {
             <div className={"row m-0"}>
                 <Drawer title={"Tasks"}>
                     <MenuPanel title={"Friends"} collapsed={true}>
-                        <MenuItem title={"Home"} path={"/"} useHoverEffect/>
-                        <MenuItem title={"Impressum"} path={"/impressum"} useHoverEffect/>
+                        <MenuItem title={"Show"} path={"friends"} useHoverEffect/>
+                        <MenuItem title={"Add"} path={"friends/add"} useHoverEffect/>
                     </MenuPanel>
                 </Drawer>
 
-                <div className={"col bg-dark-subtle"}>
+                <div className={"col"}>
                     <Outlet/>
                 </div>
             </div>
